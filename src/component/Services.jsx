@@ -13,7 +13,6 @@ import Card from "./Card";
 import "../App.css";
 
 function Services() {
-
   const [services, setServices] = useState([]);
   const [filter, setFilter] = useState("mess");
   //form component
@@ -26,7 +25,7 @@ function Services() {
   const servicesCollectionRef = collection(db, "Services");
 
   //queries
-  const q = query(servicesCollectionRef, where("category", "==", filter ));
+  const q = query(servicesCollectionRef, where("category", "==", filter)); 
   //getting services
   useEffect(() => {
     const getServices = async () => {
@@ -39,7 +38,8 @@ function Services() {
       });
     };
     getServices();
-  }, []);
+    console.log(filter);
+  }, [filter]);
 
   //adding service
   const handleSubmit = (e) => {
@@ -56,6 +56,7 @@ function Services() {
     });
   };
 
+  console.log(filter);
   //deleting services
   const deleteInfo = (id) => {
     const docRef = doc(db, "Services", id);
@@ -76,8 +77,8 @@ function Services() {
     <>
       <Card menuData={services} deleteInfo={deleteInfo} />
       <div>
-        <button onClick={() => setFilter("hostel")}>Hostel</button>
-        <button onClick={() => setFilter("mess")}>Mess</button>
+        <button onClick={() => setFilter('hostel')}>Hostel</button>
+        <button onClick={() => setFilter('mess')}>Mess</button>
       </div>
 
       <div className="form-popup" id="myForm">
@@ -114,13 +115,24 @@ function Services() {
           <button type="submit" className="btn">
             Add
           </button>
-          <button type="button" className="btn cancel" onClick={ () => {closeForm()}}>
+          <button
+            type="button"
+            className="btn cancel"
+            onClick={() => {
+              closeForm();
+            }}
+          >
             Close
           </button>
         </form>
       </div>
 
-      <button className="open-button" onClick={() => {openForm()}}>
+      <button
+        className="open-button"
+        onClick={() => {
+          openForm();
+        }}
+      >
         Open Form
       </button>
     </>
