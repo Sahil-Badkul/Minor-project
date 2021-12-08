@@ -1,4 +1,5 @@
 import logo from '../images/logo.jpg'
+import './about.css';
 const About = () => {
   return (
     <>

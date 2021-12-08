@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import About from "./About";
 import Contact from "./Contact";
 import Services from "./Services";
-
+import './home.css';
 const Home = () => {
   return (
     <>

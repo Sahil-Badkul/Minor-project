@@ -1,3 +1,4 @@
+import './fotter.css';
 const Fotter = () => {
   return (
     <>
