@@ -1,4 +1,10 @@
 
+.serviceNav{
+  display: inline-block;
+  width: 45%;
+  margin: 10px;
+  margin-top: 0;
+}
 .services{
     display: flex;
     justify-content: space-between;

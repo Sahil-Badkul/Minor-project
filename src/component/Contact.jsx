@@ -1,5 +1,34 @@
 import './contact.css';
+import { useState } from 'react';
+import db from '../database/Config';
+import {
+  collection,
+  addDoc
+} from 'firebase/firestore'
 const Contact = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('')
+  const [message, setMessage] = useState('');
+
+  //init contactInfo
+  const contactInfoCollectionRef = collection(db, 'contactInfo');
+
+  const handleAddContact = (e) => {
+    e.preventDefault();
+    const info = {name,email,subject,message};
+    console.log(info);
+    addDoc(contactInfoCollectionRef, {
+      name,
+      email,
+      subject,
+      message
+    }).then(() => {
+      alert('Message send.')
+      console.log('info added');
+    });
+  }
+
   return (
     <>
       <section id="contact" className="dark">
@@ -8,12 +37,12 @@ const Contact = () => {
           <div className="contact-info">
             <div className="item">
               <i className="fas fa-mobile-alt"></i>
-              +91 8305300840
+              <a href="tel:918305300840">+91 8305300840</a>
             </div>
 
             <div className="item">
               <i className="fas fa-envelope"></i>
-              truefriend@gmil.com
+              <a href="mailto:056happylife@gmail.com">Send email</a>
             </div>
 
             <div className="item">
@@ -22,19 +51,35 @@ const Contact = () => {
             </div>
           </div>
 
-          <form action="#" className="contact-form">
+          <form onSubmit={handleAddContact} className="contact-form">
             <input
               type="text"
               className="nameZone"
               placeholder="Your Full Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
             />
             <input
               type="email"
               className="emailZone"
               placeholder="Your Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
-            <input type="text" className="subjectZone" placeholder="Subject" />
-            <textarea className="messageZone" placeholder="Message"></textarea>
+            <input 
+              type="text" 
+              className="subjectZone" 
+              placeholder="Subject"
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+            />
+            <textarea
+             className="messageZone" 
+             placeholder="Message"
+             value={message}
+             onChange={(e) => setMessage(e.target.value)}
+             ></textarea>
             <input type="submit" value="Send Message" className="btn" />
           </form>
         </div>

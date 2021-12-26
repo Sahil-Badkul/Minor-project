@@ -27,6 +27,11 @@
   .contact-info .item:hover{
     background-color: #48dbfb;
   }
+
+  .contact-info .item a{
+    color: #fff;
+    text-decoration: none;
+  }
   
   .contact-form{
     display: flex;
