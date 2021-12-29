@@ -4,7 +4,7 @@ import About from './component/About';
 import Contact from './component/Contact'
 import Services from "./component/Services";
 import Fotter from "./component/Fotter";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 function App() {

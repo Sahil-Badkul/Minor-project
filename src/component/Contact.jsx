@@ -6,13 +6,13 @@ import {
   addDoc
 } from 'firebase/firestore'
 const Contact = () => {
+  // init contactInfo
+  const contactInfoCollectionRef = collection(db, 'contactInfo');
+  
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('')
   const [message, setMessage] = useState('');
-
-  //init contactInfo
-  const contactInfoCollectionRef = collection(db, 'contactInfo');
 
   const handleAddContact = (e) => {
     e.preventDefault();

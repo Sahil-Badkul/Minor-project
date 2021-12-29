@@ -12,7 +12,8 @@ import {
   getDoc,
 } from "firebase/firestore";
 import { auth } from "../database/Config";
-import { 
+import storage from "../database/Config";
+import {
   createUserWithEmailAndPassword,
   signOut,
   signInWithEmailAndPassword,
@@ -31,7 +32,7 @@ function Services() {
   //form component
   const [name, setName] = useState("");
   const [category, setCategory] = useState("hostel");
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState('');
   const [description, setDescription] = useState("");
 
   //signin component
@@ -59,10 +60,16 @@ function Services() {
   }, [filter]);
 
   //adding service
-  const handleSubmit = (e) => {
+  const handleSubmit =  async (e) => {
     e.preventDefault();
     const info = { name, image, category, description };
     console.log(info);
+
+    if (image == null)
+      return;
+    storage.ref(`/images/${image.name}`).put(image)
+      .on("state_changed", alert("success"), alert);
+
     addDoc(servicesCollectionRef, {
       name,
       description,
@@ -109,9 +116,9 @@ function Services() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth,email,password)
+    signInWithEmailAndPassword(auth, email, password)
       .then((cred) => {
-        console.log('user logged in:',cred.user.email);
+        console.log('user logged in:', cred.user.email);
         closeForm('login');
       })
       .catch((err) => {
@@ -132,14 +139,15 @@ function Services() {
 
   //Auth state change
   onAuthStateChanged(auth, (user) => {
-    if(user === null){
-      document.getElementById("signoutBtn").style.display = "none";
-      document.getElementById("loginBtn").style.display = "block";
-    }else{
-      document.getElementById("loginBtn").style.display = "none";
-      document.getElementById("signoutBtn").style.display = "block";
-    }
-    document.getElementById("signinBtn").style.display = "none";
+    // if (user === null) {
+    //   document.getElementById("signoutBtn").style.display = "none";
+    //   document.getElementById("loginBtn").style.display = "block";
+    // }
+    //  else {
+    //   document.getElementById("loginBtn").style.display = "none";
+    //   document.getElementById("signoutBtn").style.display = "block";
+    // }
+    // document.getElementById("signinBtn").style.display = "none";
   })
 
   var signInModal = document.getElementById("signin");
@@ -184,7 +192,7 @@ function Services() {
     <>
       <section className="dark">
         <div className="inner-width" style={{ marginTop: 30 }}>
-          <h1 className="section-title"> Our Services</h1>
+          {/* <h1 className="section-title"> Our Services</h1> */}
           <div>
             <button onClick={() => setFilter("hostel")} className="serviceNav">
               Hostel
@@ -203,7 +211,7 @@ function Services() {
           </div>
 
           <div className="form-popup" id="myForm">
-            <form onSubmit={handleSubmit} class="form-container">
+            <form onSubmit={handleSubmit} className="form-container">
               <h1>Add service</h1>
               <label>Enter title/name:</label>
               <input
@@ -217,7 +225,7 @@ function Services() {
                 type="file"
                 required
                 value={image}
-                onChange={(e) => setImage(e.target.value)}
+                onChange={(e) => { setImage(e.target.files[0]) }}
               />
               <label>Description:</label>
               <textarea
@@ -277,7 +285,7 @@ function Services() {
               <p>Please fill in this form to create an account.</p>
               <br />
               <hr />
-              <label for="email">
+              <label htmlFor="email">
                 <b>Email</b>
               </label>
               <input
@@ -289,7 +297,7 @@ function Services() {
                 required
               />
 
-              <label for="psw">
+              <label htmlFor="psw">
                 <b>Password</b>
               </label>
               <input
@@ -301,7 +309,7 @@ function Services() {
                 required
               />
 
-              <label for="psw-repeat">
+              <label  htmlFor="psw-repeat">
                 <b>Repeat Password</b>
               </label>
               <input
@@ -363,7 +371,7 @@ function Services() {
               <h1>login</h1>
               <br />
               <hr />
-              <label for="email">
+              <label htmlFor="email">
                 <b>Email</b>
               </label>
               <input
@@ -375,7 +383,7 @@ function Services() {
                 required
               />
 
-              <label for="psw">
+              <label htmlFor="psw">
                 <b>Password</b>
               </label>
               <input
