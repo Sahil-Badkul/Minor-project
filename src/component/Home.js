@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import About from "./About";
 import Contact from "./Contact";
-import Services from "./Services";
-import './home.css';
+
 const Home = () => {
   return (
     <>
@@ -20,16 +19,30 @@ const Home = () => {
             </div>
             <div className="buttons">
               <a href="#contact">Contact me</a>
-              <Link to='/services'>Services</Link>
+              <Link to="/services">Services</Link>
             </div>
           </div>
         </div>
       </section>
-      
+
       <About />
       <Contact />
-      
-  <button className="goTop fas fa-arrow-up"></button>
+      <footer>
+        <div class="inner-width">
+          <div class="copyright">
+            &copy; 2021 | Created & Designed By TrueFriend Team
+          </div>
+          <div class="sm">
+            <a href="#" class="fab fa-facebook-f"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-linkedin-in"></a>
+            <a href="#" class="fab fa-youtube"></a>
+          </div>
+        </div>
+      </footer>
+
+      <button className="goTop fas fa-arrow-up"></button>
     </>
   );
 };

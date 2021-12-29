@@ -14,8 +14,9 @@ const Navigation = () => {
           <div className="navbar-menu">
             <Link to="/">Home</Link>
             <Link to="/services">Services</Link>
-            <Link to="/about">About</Link>
             <Link to="/contact">Contact Us</Link>
+            <Link to="/create">Add Services</Link>
+            <Link to="/login">Login</Link>
           </div>
         </div>
       </nav>

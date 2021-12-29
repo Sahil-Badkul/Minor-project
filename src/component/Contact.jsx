@@ -1,4 +1,4 @@
-import './contact.css';
+import logo from '../images/logo.jpg'
 import { useState } from 'react';
 import db from '../database/Config';
 import {
@@ -31,6 +31,25 @@ const Contact = () => {
 
   return (
     <>
+       <section id="about">
+        <div className="inner-width">
+          <h1 className="section-title">About</h1>
+          <div className="about-content">
+            <img src={logo} alt="" className="about-pic" />
+            <div className="about-text">
+              <h2>Hi! We'r TrueFriend</h2>
+              <h3>
+                <span>Hostels</span>
+                <span>Food</span>
+                <span>Many more</span>
+              </h3>
+              <p>
+              We are here to help you to find hostel and mess at the comfort of your location .We pride ourselves on offering a painless user experience and we work tirelessly to achieve this.Things like hostel and mess information , their contact numbers and users reviews are just some of the things that we are facing smiles on faces.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
       <section id="contact" className="dark">
         <div className="inner-width">
           <h1 className="section-title">Get in touch</h1>
