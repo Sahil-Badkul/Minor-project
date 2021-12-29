@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import About from "./About";
 import Contact from "./Contact";
 
 const Home = () => {
@@ -25,8 +24,8 @@ const Home = () => {
         </div>
       </section>
 
-      <About />
       <Contact />
+      <button className="goTop fas fa-arrow-up"></button>
       <footer>
         <div class="inner-width">
           <div class="copyright">
@@ -42,7 +41,6 @@ const Home = () => {
         </div>
       </footer>
 
-      <button className="goTop fas fa-arrow-up"></button>
     </>
   );
 };

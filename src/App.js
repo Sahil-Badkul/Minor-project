@@ -10,10 +10,17 @@ import "./App.css";
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
+  window.onscroll = () => {
+    if(window.scrollY > 20){
+      document.querySelector('.navbar').classList.add('sticky');
+    }else{
+      document.querySelector('.navbar').classList.remove('sticky');
+    }
+  }
   return (
     <Router>
       <div className="App">
-        <Navigation />
+        <Navigation isAuth={isAuth} setIsAuth={setIsAuth} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />

@@ -1,12 +1,28 @@
 import { Link } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from '../database/Config'
+import { useNavigate } from "react-router-dom";
+const Navigation = ({ isAuth, setIsAuth }) => {
+  const handleClick = () => {
+    document.querySelector(".menu-toggler").classList.toggle("active");
+    document.querySelector(".navbar-menu").classList.toggle("active");
+  };
 
-const Navigation = () => {
+  const navigate = useNavigate();
+  const signUserOut = () => {
+    signOut(auth).then(() => {
+      localStorage.clear();
+      setIsAuth(false);
+      window.location.reload();
+      navigate("/login");
+    });
+  };
   return (
     <>
       <nav className="navbar">
         <div className="inner-width">
-          <Link to="/" className='logo'></Link>
-          <button className="menu-toggler">
+          <Link to="/" className="logo"></Link>
+          <button className="menu-toggler" onClick={handleClick}>
             <span></span>
             <span></span>
             <span></span>
@@ -15,8 +31,16 @@ const Navigation = () => {
             <Link to="/">Home</Link>
             <Link to="/services">Services</Link>
             <Link to="/contact">Contact Us</Link>
-            <Link to="/create">Add Services</Link>
-            <Link to="/login">Login</Link>
+            {!isAuth ? (
+              <Link to="/login">Login </Link>
+            ) : (
+              <>
+                <Link to="/create">Add Services</Link>
+                <Link to="#" onClick={signUserOut}>
+                  Log Out
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </nav>
