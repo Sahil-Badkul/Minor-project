@@ -84,18 +84,21 @@ const Contact = () => {
               className="emailZone"
               placeholder="Your Email"
               value={email}
+              required
               onChange={(e) => setEmail(e.target.value)}
             />
             <input 
               type="text" 
               className="subjectZone" 
               placeholder="Subject"
+              required
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
             />
             <textarea
              className="messageZone" 
              placeholder="Message"
+             required
              value={message}
              onChange={(e) => setMessage(e.target.value)}
              ></textarea>

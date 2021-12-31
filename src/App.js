@@ -7,6 +7,7 @@ import Create from "./component/Create";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import "./App.css";
+import NotFound from "./component/NotFound";
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
@@ -27,6 +28,7 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/create" element={<Create />} />
           <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </Router>
