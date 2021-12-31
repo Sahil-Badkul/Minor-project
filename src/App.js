@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import "./App.css";
 import NotFound from "./component/NotFound";
+import Footer from "./component/Footer";
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
@@ -26,10 +27,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/create" element={<Create />} />
+          <Route path="/create" element={<Create isAuth={isAuth} />} />
           <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        < Footer />
       </div>
     </Router>
   );
