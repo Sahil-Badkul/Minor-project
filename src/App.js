@@ -9,6 +9,7 @@ import { useState } from "react";
 import "./App.css";
 import NotFound from "./component/NotFound";
 import Footer from "./component/Footer";
+import ServicesDetails from "./component/ServicesDetails";
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
@@ -27,6 +28,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/services/:id" element={<ServicesDetails isAuth={isAuth} />} />
           <Route path="/create" element={<Create isAuth={isAuth} />} />
           <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
           <Route path="*" element={<NotFound />} />

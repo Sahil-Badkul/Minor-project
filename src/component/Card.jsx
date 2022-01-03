@@ -1,12 +1,11 @@
+import { Link } from "react-router-dom";
 import "./card.css";
-const Card = ({ menuData, deleteInfo, goThere }) => {
+const Card = ({ menuData }) => {
   return (
-    <>
-      <section className="main-card--cointainer">
+      <div className="main-card--cointainer">
         {menuData.map((curElem) => {
           const { id, name, category, image, description } = curElem;
           return (
-            <>
               <div className="card-container" key={id}>
                 <div className="card ">
                   <div className="card-body">
@@ -18,23 +17,14 @@ const Card = ({ menuData, deleteInfo, goThere }) => {
                     <div className="card-read">Read</div>
                   </div>
                   <img src={image} alt="images" className="card-media" />
-
-                  <span
-                    className="card-tag  subtle"
-                    onClick={() => goThere(id)}
-                  >
-                    go there
-                  </span>
-                  <button className="btn" onClick={() => deleteInfo(id)}>
-                    DELETE
-                  </button>
+                  <Link to={`/services/${id}`}>
+                    <span className="card-tag subtle">Go there</span>
+                  </Link>
                 </div>
               </div>
-            </>
           );
         })}
-      </section>
-    </>
+      </div>
   );
 };
 

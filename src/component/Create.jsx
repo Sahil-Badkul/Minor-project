@@ -37,7 +37,7 @@ const Create = ({ isAuth }) => {
         );
         setProgress(prog);
       },
-      (error) => console.log(error),
+      (error) => setError(error.message),
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setImage(downloadURL)
@@ -74,7 +74,7 @@ const Create = ({ isAuth }) => {
           <form onSubmit={formHandler} className="form-container">
             <p>Step 1 : Upload your brand image</p>
             <input type="file" className="input" required/>
-            <button type="submit">Upload</button>
+            <button type="submit" disabled={progress}>Upload</button>
           <div>uploaded image {progress} %</div>
           </form>
 
