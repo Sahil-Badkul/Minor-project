@@ -418,7 +418,6 @@ section.dark .section-title::after{
   background-color: #48dbfb;
   color: #fff;
 }
-
 footer{
   background: url(/src/images/room.jpg) no-repeat bottom;
   background-size: cover;

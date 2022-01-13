@@ -15,7 +15,7 @@ function Services() {
   const [filter, setFilter] = useState("hostel");  
 
   // init services
-  const servicesCollectionRef = collection(db, "Services");
+  const servicesCollectionRef = collection(db, "services");
 
   //queries
   const q = query(servicesCollectionRef, where("category", "==", filter));

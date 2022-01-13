@@ -2,7 +2,10 @@ import { Link } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from '../database/Config'
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 const Navigation = ({ isAuth, setIsAuth }) => {
+  const [search, setSearch] = useState('')
   const handleClick = () => {
     document.querySelector(".menu-toggler").classList.toggle("active");
     document.querySelector(".navbar-menu").classList.toggle("active");
@@ -31,6 +34,7 @@ const Navigation = ({ isAuth, setIsAuth }) => {
             <Link to="/">Home</Link>
             <Link to="/services">Services</Link>
             <Link to="/contact">Contact Us</Link>
+            <Link to="/uploadimages">Upload Images</Link>
             {!isAuth ? (
               <Link to="/login">Login </Link>
             ) : (

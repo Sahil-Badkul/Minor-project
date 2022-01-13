@@ -10,6 +10,7 @@ import "./App.css";
 import NotFound from "./component/NotFound";
 import Footer from "./component/Footer";
 import ServicesDetails from "./component/ServicesDetails";
+import UploadMultipleImages from "./component/UploadMultipleImages";
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
@@ -31,6 +32,7 @@ function App() {
           <Route path="/services/:id" element={<ServicesDetails isAuth={isAuth} />} />
           <Route path="/create" element={<Create isAuth={isAuth} />} />
           <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
+          <Route path="/uploadimages" element={<UploadMultipleImages />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         < Footer />

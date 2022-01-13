@@ -12,7 +12,7 @@ const Login = ({ setIsAuth }) => {
             localStorage.setItem('isAuth', true);
             setIsAuth(true);
             setError(false);
-            navigate("/");
+            navigate(-1);
         }).catch((e) => {
             setError(e.message)
         })
