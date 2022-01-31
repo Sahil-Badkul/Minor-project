@@ -31,7 +31,6 @@ const Contact = () => {
 
   return (
     <>
-      <section id='AboutContactHeader' className='dark'></section>
        <section id="about">
         <div className="inner-width">
           <h1 className="section-title">About</h1>

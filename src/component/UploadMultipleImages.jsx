@@ -60,14 +60,6 @@ const UploadMultipleImages = () => {
         <button onClick={handleUpload}>Upload</button>
         <br />
         {urls.map((url, i) => (
-          <div key={i}>
-            <a href={url} target="_blank">
-              {url}
-            </a>
-          </div>
-        ))}
-        <br />
-        {urls.map((url, i) => (
             <>
           <img
             key={i}
